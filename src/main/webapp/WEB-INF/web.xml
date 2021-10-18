@@ -2,4 +2,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+<servlet>
+    <servlet-name>internet</servlet-name>
+    <servlet-class>letscode.MainServlet</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>internet</servlet-name>
+        <url-pattern>/my-servlet/</url-pattern>
+    </servlet-mapping>
+    
+<servlet-mapping>
+<servlet-name>default</servlet-name>
+<url-pattern>/static/</url-pattern>
+</servlet-mapping>
+    
 </web-app>

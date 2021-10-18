@@ -17,9 +17,9 @@ public class User extends HttpServlet {
     private final UserService userService = new UserServiceImpl();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<UserDto> users = userService.getAll();
-        req.setAttribute("users", users);
-        req.getRequestDispatcher("users.ftl").forward(req, resp);
+        request.setAttribute("users", users);
+        request.getRequestDispatcher("users.ftl").forward(request, response);
     }
 }

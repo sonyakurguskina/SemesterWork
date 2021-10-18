@@ -1,8 +1,7 @@
 package ru.itis.kurguskina.servlet;
 
-
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +26,7 @@ public class Login extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         if (LOGIN.equals(login) && PASSWORD.equals(password)) {
-//            logger.info("User with username = {} logged in.", login);
+            logger.info("User with username = {} logged in.", login);
             HttpSession session = req.getSession();
             session.setAttribute("username", login);
             session.setMaxInactiveInterval(60 * 60);
