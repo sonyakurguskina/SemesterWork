@@ -1,12 +1,12 @@
 package ru.itis.kurguskina.service;
 
-import ru.itis.kurguskina.dto.UserDto;
+import ru.itis.kurguskina.dao.UserDao;
 import ru.itis.kurguskina.model.User;
 
-import java.util.List;
+public class UserService {
+    private UserDao userDao;
 
-public interface UserService {
-    List<UserDto> getAll();
-    UserDto get(int id);
-    void save(User user);
+    public void regist(User user){
+        this.userDao.addUser(user);
+    }
 }
