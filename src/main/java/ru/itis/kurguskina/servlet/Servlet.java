@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/myservlet")
+@WebServlet("/servlet")
 public class Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
-        writer.println("<h1>Hello!<h1>");
-        request.setAttribute("name","internet");
-        request.getRequestDispatcher("mainpage.jsp").forward(request,response);
+//        writer.println("<h1>Hello!<h1>");
+        request.setAttribute("name","TEST");
+        request.getRequestDispatcher("Main.jsp").forward(request,response);
     }
 
     @Override

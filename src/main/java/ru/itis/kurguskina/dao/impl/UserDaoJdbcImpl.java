@@ -27,14 +27,17 @@ public class UserDaoJdbcImpl implements UserDao {
         ResultSet rs = null;
         try {
             connection = JdbcUtils.getConnection();
-            String sql = "insert into user(firstName,lastName, birthday, sex, email) values (?,?,?,?,?) ";
+            String sql = "insert into users(firstname,lastname, birthday, gender, username,password) values (?,?,?,?,?,?) ";
             ps = connection.prepareStatement(sql);
-            ps.setString(1, user.getFirstName());
-            ps.setString(2, user.getLastName());
+            ps.setString(1, user.getFirstname());
+            ps.setString(2, user.getLastname());
             ps.setDate(3, new java.sql.Date(user.getBirthday().getTime()));
-            ps.setString(4, user.getSex());
-            ps.setString(5, user.getEmail());
+            ps.setString(4, user.getGender());
+            ps.setString(5, user.getUsername());
+            ps.setString(5, user.getPassword());
+
             ps.executeUpdate();
+//            connection.commit(); //посмотреть нужно или нет
         } catch (SQLException e) {
             throw new DaoException(e.getMessage(), e);
         } finally {
@@ -66,7 +69,7 @@ public class UserDaoJdbcImpl implements UserDao {
         User user = null;
         try {
             connection = JdbcUtils.getConnection();
-            String sql = "select id, firstName, lastName, birthday, sex, email from user where firstName=? && lastName=?";
+            String sql = "select id, firstname, lastname, birthday, gender, username from user where firstname=? && lastname=?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, login);
             rs = ps.executeQuery();
@@ -88,7 +91,7 @@ public class UserDaoJdbcImpl implements UserDao {
         User user = null;
         try {
             connection = JdbcUtils.getConnection();
-            String sql = "select id, firstName, lastName, birthday, sex, email  from user where id=?";
+            String sql = "select id, firstName, lastName, birthday, gender, username  from user where id=?";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, userId);
             rs = ps.executeQuery();
@@ -106,11 +109,11 @@ public class UserDaoJdbcImpl implements UserDao {
     private User mappingUser(ResultSet rs) throws SQLException {
         User user = new User();
         user.setId(rs.getInt("id"));
-        user.setFirstName(rs.getString("firstName"));
-        user.setLastName(rs.getString("lastName"));
+        user.setFirstname(rs.getString("firstName"));
+        user.setLastname(rs.getString("lastName"));
         user.setBirthday(rs.getDate("birthday"));
-        user.setSex(rs.getString("sex"));
-        user.setEmail(rs.getString("email"));
+        user.setGender(rs.getString("gender"));
+        user.setUsername(rs.getString("username"));
         return user;
     }
 
@@ -120,13 +123,13 @@ public class UserDaoJdbcImpl implements UserDao {
         ResultSet rs = null;
         try {
             connection = JdbcUtils.getConnection();
-            String sql = "update user set firstName=?, lastName=?,  birthday=?, sex=?, email=? where id=? ";
+            String sql = "update user set firstName=?, lastName=?,  birthday=?, gender=?, email=? where id=? ";
             ps = connection.prepareStatement(sql);
-            ps.setString(1, user.getFirstName());
-            ps.setString(2, user.getLastName());
+            ps.setString(1, user.getFirstname());
+            ps.setString(2, user.getLastname());
             ps.setDate(3, new java.sql.Date(user.getBirthday().getTime()));
-            ps.setString(4, user.getSex());
-            ps.setString(5, user.getEmail());
+            ps.setString(4, user.getGender());
+            ps.setString(5, user.getUsername());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException(e.getMessage(), e);

@@ -19,7 +19,7 @@ import ru.itis.kurguskina.model.User;
  Регистрация пользователя
  */
 @WebServlet("/registr")
-public class Registration extends HttpServlet {
+public class RegistrationServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -69,9 +69,9 @@ public class Registration extends HttpServlet {
         }
 
         User user = new User();
-        user.setLogin(login);
+        user.setUsername(login);
         user.setPassword(password);
-        user.setEmail(email);
+        user.setUsername(email);
 //        user.setActivated(false);
 
         userDao.addUser(user);
