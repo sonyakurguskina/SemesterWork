@@ -8,7 +8,6 @@ public class User {
     private String firstname;
     private String lastname;
     private Date birthday;
-    private String gender;
     private String username;
     private String password;
 
@@ -16,14 +15,24 @@ public class User {
         this.username = username;
         this.password = password;
     }
+    public User(String username) {
+        this.username = username;
+    }
 
-    public User(int id, String firstname, String lastname, Date birthday, String gender, String username) {
+    public User(int id, String firstname, String lastname, Date birthday, String username) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.birthday=birthday;
-        this.gender = gender;
         this.username = username;
+    }
+    public User(int id, String firstname, String lastname, Date birthday, String username,String password) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birthday=birthday;
+        this.username = username;
+        this.password = password;
     }
 
     public User() {
@@ -33,8 +42,10 @@ public class User {
         this.password = password;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    public User(int id){
+        this.id = id;
+    }
+
 
     public int getId() {
         return id;
@@ -64,14 +75,6 @@ public class User {
         this.birthday = birthday;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String sex) {
-        this.gender = gender;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -99,7 +102,6 @@ public class User {
                 ", firstName=" + firstname +
                 ", lastName=" + lastname +
                 ", birthday=" + birthday +
-                ", sex=" + gender +
                 ", email" + username +
                 ", login" + username +
                 ", password" + password +

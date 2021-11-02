@@ -25,7 +25,17 @@
         <url-pattern>/RegistrationServlet</url-pattern>
     </servlet-mapping>
 
-<!--    <servlet-mapping>-->
+    <servlet>
+        <servlet-name>mainanon</servlet-name>
+        <servlet-class>ru.itis.kurguskina.servlet.MainPageAnonServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>mainanon</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+    <!--    <servlet-mapping>-->
 <!--        <servlet-name>default</servlet-name>-->
 <!--        <url-pattern>/*</url-pattern>-->
 <!--    </servlet-mapping>-->

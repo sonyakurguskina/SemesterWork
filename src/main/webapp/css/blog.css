@@ -3,15 +3,21 @@
 .blog-header {
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;
+    text-decoration: none;
 }
 
 .nav-scroller{
-  text-decoration: none;
+  font-family: "Playfair Display", Georgia, "Times New Roman";
+    text-decoration: none;
+}
+.d-flex justify-content-start{
+    text-decoration: none;
 }
 
 .blog-header-logo {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-family: "Playfair Display", Georgia, "Times New Roman";
   font-size: 2.25rem;
+  text-decoration: none;
 }
 
 .blog-header-logo:hover {
@@ -20,14 +26,17 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    text-decoration: none;
 }
 
 .display-4 {
   font-size: 2.5rem;
+    text-decoration: none;
 }
 @media (min-width: 768px) {
   .display-4 {
     font-size: 3rem;
+      text-decoration: none;
   }
 }
 
@@ -36,9 +45,10 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   height: 2.75rem;
   overflow-y: hidden;
+  text-decoration: none;
 }
 
-.nav-scroller .nav {
+.nav-scroller.nav{
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
@@ -49,12 +59,14 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
+  text-decoration: none;
 }
 
 .nav-scroller .nav-link {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: .875rem;
+  text-decoration: none;
 }
 
 .card-img-right {
@@ -107,4 +119,59 @@ h1, h2, h3, h4, h5, h6 {
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
+}
+
+.carousel-slide {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.carousel-item {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.carousel-caption d-none d-md-block {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.carousel-control-prev {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  background: 0 0;
+  border: 0;
+  opacity: .5;
+  transition: opacity .15s ease;
+}
+
+.carousel-control-next {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  background: 0 0;
+  border: 0;
+  opacity: .5;
+  transition: opacity .15s ease;
+}
+
+.carousel-indicators {
+  margin: auto;
 }

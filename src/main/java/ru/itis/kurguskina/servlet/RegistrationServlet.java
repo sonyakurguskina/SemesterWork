@@ -51,62 +51,6 @@ public class RegistrationServlet extends HttpServlet {
                 userDao.addUser(new User(username,password));
                 response.sendRedirect("blog.html");
             }
-
-//        response.sendRedirect("blog.html");
-
-//        true false=jdbcimpl.checkuser(login, password);
-//        if else
-
-//            response.sendRedirect("blog.html");
-//        } else {
-//            resp.sendRedirect("signin.html");
-//        }
-//        Map<String, String> errors = new HashMap<String,String>();
-//        if (login == null || "".equals(login)) {
-//            errors.put("login", "Имя пользователя не может быть пустым!");
-//        } else if (login != null && userDao.findUser(login,password) != null) {
-//            errors.put("userName", "Этот пользователь уже зарегистрирован!");
-//        }
-//
-//        if (password == null || "".equals(password)) {
-//            errors.put("password","Пароль не может быть пустым!");
-//        } else if (password != null && password.length() < 3) {
-//            errors.put("password","Длина пароля не может быть меньше 3 цифр!");
-//        }
-//
-//        if (password2 == null || "".equals(password2)) {
-//            errors.put("password2", "Подтверждение пароля не может быть пустым!");
-//        } else if (password2 != null && !password2.equals(password)) {
-//            errors.put("password2", "Пароли, введенные дважды, не совпадают!");
-//        }
-//        if (email == null || "".equals(email)) {
-//            errors.put("email", "электронная почта не может быть пустой!");
-//
-//        } else if (email != null && !email.matches("[0-9a-zA-Z_-]+@[0-9a-zA-Z_-]+\\.[0-9a-zA-Z_-]+(\\.[0-9a-zA-Z_-])*")) {
-//            errors.put("email", "Неверный формат электронной почты!");
-//        }
-//
-//
-//        if (!errors.isEmpty()) {
-//            request.setAttribute("errors", errors);
-//            request.getRequestDispatcher("/registerUI").forward(request, response);
-//            return;
-//        }
-//
-//        User user = new User();
-//        user.setUsername(login);
-//        user.setPassword(password);
-//        user.setUsername(email);
-////        user.setActivated(false);
-//
-//        userDao.addUser(user);
-
-        // После успешной регистрации отправляем ссылку активации аккаунта
-//        EmailUtils.sendAccountActivateEmail(user);
-
-//        // Успешная регистрация напрямую сохраняет текущего пользователя в сеансе
-//        request.getSession().setAttribute("user", user);
-//        request.getRequestDispatcher("/WEB-INF/pages/registerSuccess.jsp").forward(request,response);
     }
 
 }
