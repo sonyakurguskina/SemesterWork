@@ -7,7 +7,7 @@ public class User {
     private int id;
     private String firstname;
     private String lastname;
-    private Date birthday;
+    private String birthday;
     private String username;
     private String password;
 
@@ -19,14 +19,14 @@ public class User {
         this.username = username;
     }
 
-    public User(int id, String firstname, String lastname, Date birthday, String username) {
+    public User(int id, String firstname, String lastname, String birthday, String username) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.birthday=birthday;
         this.username = username;
     }
-    public User(int id, String firstname, String lastname, Date birthday, String username,String password) {
+    public User(int id, String firstname, String lastname, String birthday, String username,String password) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -34,6 +34,16 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    public User(String firstname, String lastname, String birthday, String username,String password) {
+//        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birthday=birthday;
+        this.username = username;
+        this.password = password;
+    }
+
 
     public User() {
         this.firstname = firstname;
@@ -67,11 +77,11 @@ public class User {
         return lastname;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

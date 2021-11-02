@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 
+import org.hibernate.id.GUIDGenerator;
 import ru.itis.kurguskina.dao.UserDao;
 import ru.itis.kurguskina.dao.impl.UserDaoJdbcImpl;
 import ru.itis.kurguskina.model.User;
@@ -19,7 +20,7 @@ import ru.itis.kurguskina.model.User;
 @WebServlet(name="RegistrationServlet", urlPatterns = "/registr")
 public class RegistrationServlet extends HttpServlet {
 
-//    private static final long serialVersionUID = 1L;
+    //    private static final long serialVersionUID = 1L;
 //
     private UserDao userDao = new UserDaoJdbcImpl();
 
@@ -32,25 +33,30 @@ public class RegistrationServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
 //        String email = request.getParameter("email");
+        String firstname = request.getParameter("firstname");
+        String lastname = request.getParameter("lastname");
+        String date = request.getParameter("year") + " " +  request.getParameter("month") + " " + request.getParameter("day");
+        // тут получить дату
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+
 //        String password2 = request.getParameter("password2");
 
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            session.setMaxInactiveInterval(60 * 60);
+        HttpSession session = request.getSession();
+        session.setAttribute("username", username);
+        session.setMaxInactiveInterval(60 * 60);
 
-            Cookie userCookie = new Cookie("username", username);
-            userCookie.setMaxAge(24 * 60 * 60);
-            response.addCookie(userCookie);
+        Cookie userCookie = new Cookie("username", username);
+        userCookie.setMaxAge(24 * 60 * 60);
+        response.addCookie(userCookie);
 
-            if(userDao.findUser(username,password) != null){
-                response.sendRedirect("registration.html");
-            }
-            else{
-                userDao.addUser(new User(username,password));
-                response.sendRedirect("blog.html");
-            }
+        if(userDao.findUser(username,password) != null){
+            response.sendRedirect("registration.html");
+        }
+        else{
+            userDao.addUser(new User(firstname, lastname,date, username,password));
+            response.sendRedirect("blog.html");
+        }
     }
 
 }

@@ -175,3 +175,116 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-indicators {
   margin: auto;
 }
+#nav {
+  padding: 20px 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu li a {
+  display: block;
+  padding: 10px 30px;
+}
+
+.menu li {
+  background-color: #ddd;
+}
+
+.menu-item {
+  margin-right: 2px;
+  position: relative;
+}
+
+.menu {
+  display: flex;
+}
+
+.submenu {
+  position: absolute;
+  display: none;
+}
+
+.submenu-item {
+  margin-top: 1px;
+}
+
+.dws-menu *{
+  margin: 0;
+  padding: 0;
+}
+
+.dws-menu ul,
+dws-menu ol{
+  list-style: none;
+}
+
+.dws-menu > ul{
+  display: flex;
+  justify-content: center;
+}
+
+.dws-menu > ul li a{
+  display: block;
+  background: #ececed;
+  padding: 15px 30px 15px 10px;
+  font-size: 14px;
+  color: #454547;
+  text-decoration: none;
+  text-transform: uppercase  ;
+}
+
+.dws-menu > ul li{
+  position: relative;
+  border-right: 1px solid #c7c8ca;
+}
+
+.dws-menu > ul li > a i.fa{
+  position: absolute;
+  top: 15px;
+  left: 12px;
+  font-size: 18px;
+}
+
+.dws-menu > ul li:first-child{
+  border-left: 1px solid #b2b3b5;
+}
+
+.dws-menu > ul li:last-child{
+  border-right: 1px solid #babbbb;
+}
+
+.dropdown-menu ul {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 10000;
+}
+
+.dropdown-menu li{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 10000;
+}
+
+.dropdown-menu span {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 10000;
+}
+
+.dropdown-menu a {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 10000;
+}
+
+

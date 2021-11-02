@@ -7,8 +7,8 @@ import ru.itis.kurguskina.helper.ConnectionHelper;
 import ru.itis.kurguskina.model.User;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.util.*;
 
 
 public class UserDaoJdbcImpl implements UserDao {
@@ -21,7 +21,7 @@ public class UserDaoJdbcImpl implements UserDao {
         user.setId(rs.getInt("id"));
         user.setFirstname(rs.getString("firstName"));
         user.setLastname(rs.getString("lastName"));
-        user.setBirthday(rs.getDate("birthday"));
+        user.setBirthday(rs.getString("birthday"));
         user.setUsername(rs.getString("username"));
         return user;
     }
@@ -30,14 +30,14 @@ public class UserDaoJdbcImpl implements UserDao {
     public void addUser(User user) {
         String sql = "INSERT INTO users (id,firstname,lastname,birthday,username,password) VALUES (?,?,?,?,?,?)";
 
-        try{
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1,user.getId());
-            preparedStatement.setString(2,user.getFirstname());
-            preparedStatement.setString(3,user.getLastname());
-            preparedStatement.setDate(4, (Date) user.getBirthday());
+            preparedStatement.setInt(1, user.getId());
+            preparedStatement.setString(2, user.getFirstname());
+            preparedStatement.setString(3, user.getLastname());
+            preparedStatement.setString(4,  user.getBirthday());
             preparedStatement.setString(5, user.getUsername());
-            preparedStatement.setString( 6,user.getPassword());
+            preparedStatement.setString(6, user.getPassword());
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             LOGGER.warn("Failed to save new user", throwables);
@@ -60,23 +60,23 @@ public class UserDaoJdbcImpl implements UserDao {
             while (resultSet.next()) {
                 if (resultSet.getString("username").equals(username)) {
                     user = new User(resultSet.getInt("id"),
-                                    resultSet.getString("firstname"),
-                                    resultSet.getString("lastname"),
-                                    resultSet.getDate("birthday"),
-                                    resultSet.getString("username"),
-                                    resultSet.getString("password"));
+                            resultSet.getString("firstname"),
+                            resultSet.getString("lastname"),
+                            resultSet.getString("birthday"),
+                            resultSet.getString("username"),
+                            resultSet.getString("password"));
                 }
             }
 
 
-                    return user;
+            return user;
         } catch (SQLException throwables) {
             LOGGER.warn("Failed to find user in database", throwables);
             return null;
         }
     }
 
-    public User findUserByName(String username) {
+    public String findUsersByName(String username) {
         try {
             String sql = "SELECT * FROM users WHERE username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -84,19 +84,25 @@ public class UserDaoJdbcImpl implements UserDao {
             preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            User user = null;
+            String string = "";
 
             while (resultSet.next()) {
-                if (resultSet.getString("username").equals(username)) {
-                    user = new User(resultSet.getString("username"));
-                }
+                string += resultSet.getString("username");
             }
-
-            return user;
+            return string;
+//            User user = null;
+//
+////            String string = resultSet.getArray(1).toString();
+//
+//            Array a = resultSet.getArray("username");
+//            String[] nullable = (String[])a.getArray();
+//            String string = nullable.toString();
+//
+//            return string;
         } catch (SQLException throwables) {
             LOGGER.warn("Failed to find user in database", throwables);
-            return null;
         }
+        return null;
     }
 
     public List<User> getAll() {
@@ -111,7 +117,7 @@ public class UserDaoJdbcImpl implements UserDao {
                 User user = new User(resultSet.getInt("id"),
                         resultSet.getString("firstname"),
                         resultSet.getString("lastname"),
-                        resultSet.getDate("birthday"),
+                        resultSet.getString("birthday"),
                         resultSet.getString("username"),
                         resultSet.getString("password"));
                 users.add(user);
